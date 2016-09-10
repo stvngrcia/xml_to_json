@@ -1,0 +1,66 @@
+{
+    "dialog": {
+        "@template": "grid_layout.html", 
+        "@dialogid": "transplant.default:instructions.04", 
+        "@marker": "control.squelch.dq", 
+        "navigation": {
+            "control": [
+                {
+                    "@action": "hide", 
+                    "@resource": "save"
+                }, 
+                {
+                    "@action": "hide", 
+                    "@resource": "back"
+                }, 
+                {
+                    "@action": "hide", 
+                    "@resource": "next"
+                }, 
+                {
+                    "@action": "save", 
+                    "@resource": "exit"
+                }
+            ]
+        }, 
+        "query": {
+            "@queryid": "query.instructions.04", 
+            "@startpos": "1", 
+            "@endpos": "16", 
+            "@css": "green-frame upper-frame-lead-spacing upper-frame-follow-spacing", 
+            "entry": {
+                "@entryid": "entry.instructions.04", 
+                "prolog": {
+                    "@css": "std-green-frame-prolog", 
+                    "#text": "<style> li {margin-top: .5em; margin-right:.5em; margin-bottom:.5em margin-left:.5em;} #preface {margin-top: 0em; margin-right:.25em; margin-bottom:.5em margin-left:.25em;} </style>\n<div id=\"preface\" class=\"TextLarge_BlueB\" >This health questionnaire will take approximately 15 minutes to complete\n<br/> <br/>\n<span class=\"TextSmall_BlackB\">\nIn order to complete this questionnaire, you will need to provide the names of <span style=\"font-size: 19px; color: #FFA500\">all medications, vitamins, and herbal supplements that you <span style=\"font-style: italic\">currently</span> take.</span> Please include those medications that you take on a regular basis, and also those medications that you take occasionally (\"as needed\").\n<br/> <br/>\n</span>\n</div>"
+                }, 
+                "itemlink": [
+                    {
+                        "@startpos": "1", 
+                        "@endpos": "16", 
+                        "@css": "TextSmall_BlueB", 
+                        "@gridparentcss": "instructions-link centered", 
+                        "@itemid": "item.instructions.04.1", 
+                        "@next": "RXLIST-MULTI.02", 
+                        "@text": "To enter your medications now, {Click Here}", 
+                        "@marker": "control.meds"
+                    }, 
+                    {
+                        "@startpos": "1", 
+                        "@endpos": "16", 
+                        "@css": "TextSmall_BlueB", 
+                        "@gridparentcss": "instructions-link centered paragraph-follow-spacing", 
+                        "@itemid": "item.instructions.04.2", 
+                        "@text": "If you do not take any medications, {Click Here}", 
+                        "@operation": "retract-back-to(RXLIST-MULTI.02)", 
+                        "@marker": "control.meds:false"
+                    }
+                ]
+            }
+        }, 
+        "marker-format": {
+            "@name": "prescreen.passed", 
+            "specification": "true"
+        }
+    }
+}

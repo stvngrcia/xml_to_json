@@ -1,0 +1,60 @@
+{
+    "dialog": {
+        "@template": "grid_layout.html", 
+        "@dialogID": "transplant.default:screening.kidneystones", 
+        "@depends": "control.screening.kidneystones:enable", 
+        "@next": "hidden.screening(kidneystones)", 
+        "navigation": {
+            "control": [
+                {
+                    "@resource": "back", 
+                    "@action": "show"
+                }, 
+                {
+                    "@resource": "save", 
+                    "@action": "hide"
+                }, 
+                {
+                    "@resource": "next", 
+                    "@action": "show"
+                }
+            ]
+        }, 
+        "query": {
+            "@queryID": "donor.screen.kidneystones.query", 
+            "@startpos": "1", 
+            "@endpos": "16", 
+            "@css": "green-frame upper-frame-lead-spacing upper-frame-follow-spacing", 
+            "@gridparentcss": "lower-frame-follow-spacing", 
+            "prolog": {
+                "@startpos": "1", 
+                "@endpos": "16", 
+                "@css": "std-green-frame-prolog", 
+                "#text": "Have you had 2 or more kidney stones in your lifetime?"
+            }, 
+            "entry": {
+                "@entryID": "donor.screen.kidneystones.entry.0", 
+                "@css": "widget-lead-spacing", 
+                "itemchoice": [
+                    {
+                        "@startpos": "1", 
+                        "@endpos": "16", 
+                        "@text": "Yes", 
+                        "@resource": "yes-button", 
+                        "@itemid": "screening.kidneystones.item.yes", 
+                        "@mode": "alwaysfire", 
+                        "@marker": "control.reject.hard.kidneystones"
+                    }, 
+                    {
+                        "@continued": "true", 
+                        "@css": "image-button-lead-spacing", 
+                        "@text": "No", 
+                        "@resource": "no-button", 
+                        "@itemid": "screening.kidneystones.item.no", 
+                        "@mode": "alwaysfire"
+                    }
+                ]
+            }
+        }
+    }
+}

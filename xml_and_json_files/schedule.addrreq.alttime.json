@@ -1,0 +1,304 @@
+{
+    "dialog": {
+        "@template": "grid_layout.html", 
+        "@dialogid": "transplant.default:schedule.addrreq.alttime", 
+        "query": {
+            "@id": "query.head", 
+            "@startpos": "1", 
+            "@endpos": "16", 
+            "@css": "green-frame upper-frame-lead-spacing upper-frame-follow-spacing vertical-padding", 
+            "entry": [
+                {
+                    "@entryID": "entry.head", 
+                    "prolog": {
+                        "@startpos": "1", 
+                        "@endpos": "16", 
+                        "@css": "std-green-frame-prolog centered", 
+                        "#text": "Please indicate the best time and phone number to contact you."
+                    }
+                }, 
+                {
+                    "@entryID": "entry.schedule", 
+                    "@startpos": "1", 
+                    "@endpos": "16", 
+                    "@css": "outline-box leftmost", 
+                    "@gridparentcss": "widget-lead-double-spacing lower-frame-follow-spacing schedule-text", 
+                    "validation": {
+                        "@text": "Please enter all contact information."
+                    }, 
+                    "itemselection": [
+                        {
+                            "@itemid": "seven-am", 
+                            "@depends": "schedule.morning,survey.text.hhq.schedule.eighttonine:false", 
+                            "@marker": "survey.info.preferredcontact.time.slot0:7%3A00+AM%2D9:00+AM", 
+                            "@startpos": "1", 
+                            "@endpos": "3", 
+                            "@css": "checkbox-label", 
+                            "@gridparentcss": "widget-lead-spacing paragraph-follow-spacing schedule-left-column", 
+                            "@text": "7:00 AM - 9:00 AM"
+                        }, 
+                        {
+                            "@itemid": "seven-am", 
+                            "@depends": "schedule.morning,survey.text.hhq.schedule.eighttonine", 
+                            "@marker": "survey.info.preferredcontact.time.slot0:8%3A00+AM%2D9:00+AM", 
+                            "@startpos": "1", 
+                            "@endpos": "3", 
+                            "@css": "checkbox-label", 
+                            "@gridparentcss": "widget-lead-spacing paragraph-follow-spacing schedule-left-column", 
+                            "@text": "8:00 AM - 9:00 AM"
+                        }, 
+                        {
+                            "@itemid": "monday", 
+                            "@depends": "schedule.morning:false", 
+                            "@marker": "survey.info.preferredcontact.day.1:Mon", 
+                            "@startpos": "4", 
+                            "@endpos": "7", 
+                            "@css": "checkbox-label", 
+                            "@gridparentcss": "schedule-left-column widget-lead-spacing paragraph-follow-spacing", 
+                            "@text": "Monday"
+                        }, 
+                        {
+                            "@itemid": "monday", 
+                            "@depends": "schedule.morning", 
+                            "@marker": "survey.info.preferredcontact.day.1:Mon", 
+                            "@startpos": "4", 
+                            "@endpos": "7", 
+                            "@css": "checkbox-label", 
+                            "@gridparentcss": "widget-lead-spacing paragraph-follow-spacing", 
+                            "@continued": "true", 
+                            "@text": "Monday"
+                        }, 
+                        {
+                            "@itemid": "nine-am", 
+                            "@marker": "survey.info.preferredcontact.time.slot1:9%3A00+AM%2D11%3A00+AM", 
+                            "@startpos": "1", 
+                            "@endpos": "3", 
+                            "@css": "checkbox-label", 
+                            "@gridparentcss": "paragraph-follow-spacing schedule-left-column", 
+                            "@text": "9:00 AM - 11:00 AM"
+                        }, 
+                        {
+                            "@itemid": "tuesday", 
+                            "@marker": "survey.info.preferredcontact.day.2:Tue", 
+                            "@startpos": "4", 
+                            "@endpos": "7", 
+                            "@css": "checkbox-label", 
+                            "@continued": "true", 
+                            "@text": "Tuesday"
+                        }, 
+                        {
+                            "@itemid": "eleven-am", 
+                            "@marker": "survey.info.preferredcontact.time.slot2:11%3A00+AM%2D1%3A00+PM", 
+                            "@startpos": "1", 
+                            "@endpos": "3", 
+                            "@css": "checkbox-label", 
+                            "@gridparentcss": "paragraph-follow-spacing schedule-left-column", 
+                            "@text": "11:00 AM - 1:00 PM"
+                        }, 
+                        {
+                            "@itemid": "wednesday", 
+                            "@marker": "survey.info.preferredcontact.day.3:Wed", 
+                            "@startpos": "4", 
+                            "@endpos": "7", 
+                            "@css": "checkbox-label", 
+                            "@continued": "true", 
+                            "@text": "Wednesday"
+                        }, 
+                        {
+                            "@depends": "survey.text.hhq.schedule.thirteentofifteen:false", 
+                            "@itemid": "one-pm", 
+                            "@marker": "survey.info.preferredcontact.time.slot3:1%3A00+PM%2D4%3A00+PM", 
+                            "@startpos": "1", 
+                            "@endpos": "3", 
+                            "@css": "checkbox-label", 
+                            "@gridparentcss": "paragraph-follow-spacing schedule-left-column", 
+                            "@text": "1:00 PM - 4:00 PM"
+                        }, 
+                        {
+                            "@depends": "survey.text.hhq.schedule.thirteentofifteen", 
+                            "@itemid": "one-pm", 
+                            "@marker": "survey.info.preferredcontact.time.slot3:1%3A00+PM%2D3%3A00+PM", 
+                            "@startpos": "1", 
+                            "@endpos": "3", 
+                            "@css": "checkbox-label", 
+                            "@gridparentcss": "paragraph-follow-spacing schedule-left-column", 
+                            "@text": "1:00 PM - 3:00 PM"
+                        }, 
+                        {
+                            "@itemid": "thursday", 
+                            "@marker": "survey.info.preferredcontact.day.4:Thur", 
+                            "@startpos": "4", 
+                            "@endpos": "7", 
+                            "@css": "checkbox-label", 
+                            "@continued": "true", 
+                            "@text": "Thursday"
+                        }, 
+                        {
+                            "@depends": "survey.text.hhq.schedule.fifteentosixteenthirty", 
+                            "@itemid": "four-pm", 
+                            "@marker": "survey.info.preferredcontact.time.slot4:3%3A00+PM%2D4%3A30+PM", 
+                            "@startpos": "1", 
+                            "@endpos": "3", 
+                            "@css": "checkbox-label", 
+                            "@gridparentcss": "paragraph-follow-spacing schedule-left-column", 
+                            "@text": "3:00 PM - 4:30 PM"
+                        }, 
+                        {
+                            "@depends": "survey.text.hhq.schedule.fifteentosixteenthirty:false", 
+                            "@itemid": "four-pm", 
+                            "@marker": "survey.info.preferredcontact.time.slot4:4%3A00+PM%2D6%3A00+PM", 
+                            "@startpos": "1", 
+                            "@endpos": "3", 
+                            "@css": "checkbox-label", 
+                            "@gridparentcss": "paragraph-follow-spacing schedule-left-column", 
+                            "@text": "4:00 PM - 6:00 PM"
+                        }, 
+                        {
+                            "@itemid": "friday", 
+                            "@marker": "survey.info.preferredcontact.day.5:Fri", 
+                            "@startpos": "4", 
+                            "@endpos": "7", 
+                            "@continued": "true", 
+                            "@css": "checkbox-label left-leading", 
+                            "@text": "Friday"
+                        }
+                    ], 
+                    "textfield": [
+                        {
+                            "@startpos": "8", 
+                            "@endpos": "15", 
+                            "@css": "lp-date-style", 
+                            "@gridparentcss": "widget-lead-spacing   rightmost", 
+                            "@continued": "true", 
+                            "@itemid": "phone-number", 
+                            "@size": "16", 
+                            "@text": "Best Phone Number: ", 
+                            "@mask": "mask", 
+                            "@maskparams": "{\"mask\": \"(999) 999-9999\"}", 
+                            "@jsonspec": "{}", 
+                            "@value": "${patient.phone.best}", 
+                            "@protect": "patient.phone.best"
+                        }, 
+                        {
+                            "@startpos": "8", 
+                            "@endpos": "15", 
+                            "@css": "lp-date-style", 
+                            "@validation": "optional", 
+                            "@gridparentcss": "rightmost", 
+                            "@continued": "true", 
+                            "@itemid": "home-phone", 
+                            "@protect": "patient.phone.alt", 
+                            "@value": "${patient.phone.alt}", 
+                            "@size": "16", 
+                            "@text": "Alternate Phone Number (Optional): ", 
+                            "@mask": "mask", 
+                            "@maskparams": "{\"mask\": \"(999) 999-9999\"}", 
+                            "@jsonspec": "{}"
+                        }, 
+                        {
+                            "@validation": "optional", 
+                            "@startpos": "8", 
+                            "@endpos": "15", 
+                            "@css": "lp-date-style", 
+                            "@gridparentcss": "rightmost", 
+                            "@continued": "true", 
+                            "@itemid": "email", 
+                            "@protect": "patient.email", 
+                            "@size": "16", 
+                            "@charlimit": "64", 
+                            "@text": "Your Email (Optional) : ", 
+                            "@value": "${patient.email}"
+                        }, 
+                        {
+                            "@startpos": "8", 
+                            "@endpos": "15", 
+                            "@css": "lp-date-style", 
+                            "@gridparentcss": "schedule-left-column left-lean paragraph-follow-spacing rightmost", 
+                            "@itemid": "address1", 
+                            "@protect": "patient.address.street", 
+                            "@value": "${patient.address.street}", 
+                            "@size": "16", 
+                            "@charlimit": "72", 
+                            "@text": "Your Home Address: "
+                        }, 
+                        {
+                            "@startpos": "8", 
+                            "@endpos": "15", 
+                            "@css": "lp-date-style", 
+                            "@gridparentcss": "schedule-left-column left-lean paragraph-follow-spacing rightmost", 
+                            "@itemid": "address2", 
+                            "@size": "16", 
+                            "@charlimit": "64", 
+                            "@text": "City: ", 
+                            "@protect": "patient.address.city", 
+                            "@value": "${patient.address.city}"
+                        }, 
+                        {
+                            "@startpos": "8", 
+                            "@endpos": "15", 
+                            "@css": "lp-date-style", 
+                            "@gridparentcss": "schedule-left-column left-lean paragraph-follow-spacing rightmost", 
+                            "@protect": "patient.address.zip", 
+                            "@value": "${patient.address.zip}", 
+                            "@itemid": "schedule.address.zip", 
+                            "@size": "16", 
+                            "@charlimit": "16", 
+                            "@text": "Zip: "
+                        }
+                    ], 
+                    "listchoice": [
+                        {
+                            "@startpos": "11", 
+                            "@endpos": "15", 
+                            "@gridparentcss": "paragraph-follow-spacing phone-type-spacing rightmost", 
+                            "@type": "phonetype", 
+                            "@id": "phonebesttype", 
+                            "@protect": "patient.phone.best.type", 
+                            "@continued": "true", 
+                            "@value": "${patient.phone.best.type}", 
+                            "@text": "Best Phone Type:"
+                        }, 
+                        {
+                            "@startpos": "10", 
+                            "@endpos": "15", 
+                            "@gridparentcss": "paragraph-follow-spacing phone-type-spacing rightmost", 
+                            "@type": "phonetype", 
+                            "@id": "phonealttype", 
+                            "@protect": "patient.phone.alt.type", 
+                            "@continued": "true", 
+                            "@value": "${patient.phone.alt.type}", 
+                            "@validation": "optional", 
+                            "@text": "Alternate Phone Type:"
+                        }
+                    ], 
+                    "state": {
+                        "@itemid": "schedule.address.State", 
+                        "@text": "State: ", 
+                        "@gridparentcss": "rightmost paragraph-follow-spacing", 
+                        "@css": "lp-date-style ", 
+                        "@startpos": "7", 
+                        "@endpos": "14", 
+                        "@protect": "patient.address.state", 
+                        "@value": "${patient.address.state}"
+                    }
+                }
+            ]
+        }, 
+        "marker-format": [
+            {
+                "@name": "survey.info.preferredcontact.time.list", 
+                "specification": {
+                    "@join": "survey.info.preferredcontact.time.*:%2C+", 
+                    "@sort": "true"
+                }
+            }, 
+            {
+                "@name": "survey.info.preferredcontact.day.list", 
+                "specification": {
+                    "@join": "survey.info.preferredcontact.day.*:%2C+", 
+                    "@sort": "true"
+                }
+            }
+        ]
+    }
+}

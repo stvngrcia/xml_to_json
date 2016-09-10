@@ -1,3 +1,4 @@
+# XML TO JSON
 - This class takes the name of an xml file. Then it creates or opens a  
     file with the same name, but with the extension .json where the results  
     will be stored. It first converts the xml file to a dictionary and  

@@ -1,0 +1,27 @@
+<dialog template="grid_layout.html" dialogid="transplant.default:instructions.04" marker="control.squelch.dq">
+ <navigation>
+  <control action="hide" resource="save" />
+  <control action="hide" resource="back" />
+  <control action="hide" resource="next" />
+  <control action="save" resource="exit" />
+ </navigation>
+ <query queryid="query.instructions.04" startpos="1" endpos="16" css="green-frame upper-frame-lead-spacing upper-frame-follow-spacing">
+  <entry entryid="entry.instructions.04">
+   <prolog css="std-green-frame-prolog">
+&lt;style&gt; li {margin-top: .5em; margin-right:.5em; margin-bottom:.5em margin-left:.5em;} #preface {margin-top: 0em; margin-right:.25em; margin-bottom:.5em margin-left:.25em;} &lt;/style&gt;
+&lt;div id="preface" class="TextLarge_BlueB" &gt;This health questionnaire will take approximately 15 minutes to complete
+&lt;br/&gt; &lt;br/&gt;
+&lt;span class="TextSmall_BlackB"&gt;
+In order to complete this questionnaire, you will need to provide the names of &lt;span style="font-size: 19px; color: #FFA500"&gt;all medications, vitamins, and herbal supplements that you &lt;span style="font-style: italic"&gt;currently&lt;/span&gt; take.&lt;/span&gt; Please include those medications that you take on a regular basis, and also those medications that you take occasionally ("as needed").
+&lt;br/&gt; &lt;br/&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+   </prolog>
+   <itemlink startpos="1" endpos="16" css="TextSmall_BlueB" gridparentcss="instructions-link centered" itemid="item.instructions.04.1" next="RXLIST-MULTI.02" text="To enter your medications now, {Click Here}" marker="control.meds" />
+   <itemlink startpos="1" endpos="16" css="TextSmall_BlueB" gridparentcss="instructions-link centered paragraph-follow-spacing" itemid="item.instructions.04.2" text="If you do not take any medications, {Click Here}" operation="retract-back-to(RXLIST-MULTI.02)" marker="control.meds:false" />
+  </entry>
+ </query>
+ <marker-format name="prescreen.passed">
+  <specification>true</specification>
+</marker-format>
+</dialog>

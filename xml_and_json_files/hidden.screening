@@ -1,0 +1,65 @@
+<dialog template="grid_layout.html" depends="" dialogid="utsw.transplant.kidney:hidden.screening"  hidden="true">
+      <!-- SCREENING CRITERIA LOGIC -->
+
+      <marker-format name="target-bmi">
+         <specification>34.9</specification>
+      </marker-format>
+
+      <marker-format name="control.reject.mod.underage">
+         <specification depends="age:16-17">true</specification>
+         <specification>false</specification>
+      </marker-format>
+
+      <marker-format name="control.reject.mod.bmi">
+         <specification depends="bmi:35.1-9999.9">bmioverlimit</specification>
+         <specification>false</specification>
+      </marker-format>
+
+      <marker-format name="control.reject.hard.htn">
+         <specification depends="survey.screening.affirms.htn,(patsubj.race.afro|survey.ethnicity.hispanic|rxbp-count:2-10|age:0-49)">true</specification>
+         <specification>false</specification>
+      </marker-format>
+
+      <marker-format name="control.reject.hard">
+         <specification depends="control.reject.hard.*">true</specification>
+         <specification>false</specification>
+      </marker-format>
+
+      <marker-format name="control.reject.mod">
+         <specification depends="control.reject.hard:false,(control.reject.mod.tobacco.quit|control.reject.mod.bmi)">true</specification>
+         <specification>false</specification>
+      </marker-format>
+
+      <!-- SCREENING DIALOG FLOW CONTROL MARKERS -->
+
+      <marker-format name="control.screening.diabetesrx">
+         <specification depends="control.reject.hard:false">enable</specification>
+         <specification>disable</specification>
+      </marker-format>
+
+      <marker-format name="control.screening.htn.0">
+         <specification depends="control.reject.hard:false">enable</specification>
+         <specification>disable</specification>
+      </marker-format>
+
+      <marker-format name="control.screening.htn.rxcnt">
+         <specification depends="survey.screening.affirms.htn,patsubj.race.afro:false,survey.ethnicity.hispanic:false,age:50-9999">enable</specification>
+         <specification>disable</specification>
+      </marker-format>
+
+      <marker-format name="control.screening.kidneystones">
+         <specification depends="control.reject.hard:false">enable</specification>
+         <specification>disable</specification>
+      </marker-format>
+
+      <marker-format name="control.screening.tobacco">
+         <specification depends="control.reject.hard:false">enable</specification>
+         <specification>disable</specification>
+      </marker-format>
+
+      <marker-format name="control.screening.tobacco.quit">
+         <specification depends="control.reject.mod.tobacco">enable</specification>
+         <specification>disable</specification>
+      </marker-format>
+
+</dialog>

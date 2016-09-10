@@ -1,0 +1,362 @@
+<dialog
+  template = "grid_layout.html"
+  dialogID = "utsw.transplant.kidney:donor.disqualified"
+  depends  = "control.squelch.dq:false,(control.reject.hard|control.reject.mod)"
+  control  = "end-survey"
+  continue = "false">
+  <!-- $Id$
+        $Revision$, $Date$, $Author$
+        $HeadURL$ -->
+
+   <!-- Only show if
+                Disqualification override is not in effect                          -  control.squelch.dq:false
+           and  Any one of the following conditions is true                         -  (control.reject.hard|control.reject.mod)
+                   A hard rejection has occurred                                    -  control.reject.hard
+                   A soft rejection has occurred                                    -  control.reject.mod
+
+                   HARD REJECTIONS
+                   Has hep c                                                        -  control.reject.hard.hepc
+                   Has Diabetes Rx					            -  control.reject.hard.diabetesrx
+
+                   SOFT REJECTIONS
+                   donor has a bmi over 35                                          -  control.reject.mod.bmi
+                   donor is under 18 years of age                                   -  control.reject.mod.underage
+                   donor is unwilling to quit using tobacco products                -  control.reject.mod.tobacco.quit
+                   donor is unwilling to quit using mj products                     -  control.reject.mod.mj.quit
+		<specification depends="control.reject.hard.*:false,control.reject.mod.mj.quit,control.reject.mod.tobacco.quit,control.reject.mod.drugabuse,control.reject.mod.underage,control.reject.mod.bmi">
+      -->
+
+   <navigation>
+     <control resource="back" action="hide" />
+     <control resource="save" action="hide" />
+     <control resource="next" action="hide" />
+   </navigation>
+
+   <query id  = "head"
+     startpos = "1"
+     endpos   = "16"
+     css      = "green-frame upper-frame-lead-spacing upper-frame-follow-spacing">
+
+     <prolog startpos = "1"
+       endpos         = "16"
+       css            = "std-green-frame-prolog">
+       Thank you for your generous offer to be a kidney donor.
+     </prolog>
+   </query>
+
+   <!-- Static Risk Factors -->
+    <!-- KIDNEYSTONES: HARD REJECT -->
+    <query startpos = "1"
+      endpos        = "16"
+      css           = "white-frame-with-green-border"
+      queryID       = "donor.dq.kidneystones"
+      depends       = "control.reject.hard.kidneystones">
+
+      <!--Only show if any one of the following conditions is true-->
+      <!--Donation candidate indicates they have kidneystones     -  kidneystones-->
+
+
+      <prolog startpos = "1"
+        endpos         = "16"
+        css            = "centered"
+        gridparentcss  = "std-widget-prolog-text widget-lead-spacing centered lp-widget-spacing">
+
+        &lt;span class="LowerFrameText"&gt;
+        Unfortunately, you cannot safely be a donor.&lt;br/&gt;&lt;br/&gt;
+        A history of Kidney Stones places you at increased risk of kidney disease and dangerous complications if you donate your kidney.&lt;br/&gt;&lt;br/&gt;
+        If you have any questions, you may email us at&lt;br/&gt;
+        ${survey.text.utsw.email.addr}&lt;br/&gt;
+        and a member of our transplant team will get back to you soon.
+        &lt;/span&gt;
+      </prolog>
+
+      <entry entryid="donor.dq.kidneystones.e" />
+    </query>
+    <!-- HTn: HARD REJECT -->
+    <query startpos = "1"
+      endpos        = "16"
+      css           = "white-frame-with-green-border"
+      queryID       = "donor.dq.htn"
+      depends       = "control.reject.hard.htn">
+
+      <!--Only show if any one of the following conditions is true-->
+      <!--Donation candidate indicates they have hcv     -  hcv-->
+
+
+      <prolog startpos = "1"
+        endpos         = "16"
+        css            = "centered"
+        gridparentcss  = "std-widget-prolog-text widget-lead-spacing centered lp-widget-spacing">
+
+        &lt;span class="LowerFrameText"&gt;
+        Unfortunately, you cannot safely be a donor.&lt;br/&gt;&lt;br/&gt;
+        High Blood Pressure places you at increased risk of kidney disease and dangerous complications if you donate your kidney.&lt;br/&gt;&lt;br/&gt;
+        If you have any questions, you may email us at&lt;br/&gt;
+        ${survey.text.screening.utsw.email.addr}&lt;br/&gt;
+        and a member of our transplant team will get back to you soon.
+        &lt;/span&gt;
+      </prolog>
+
+      <entry entryid="donor.dq.htn.e" />
+    </query>
+
+    <!-- CANCER: HARD REJECT -->
+    <query startpos = "1"
+      endpos        = "16"
+      css           = "white-frame-with-green-border"
+      queryID       = "donor.dq.cancer"
+      depends       = "control.reject.hard.cancer">
+
+      <!--Only show if any one of the following conditions is true-->
+      <!--Donation candidate indicates they have cancer     -  cancer-->
+
+
+      <prolog startpos = "1"
+        endpos         = "16"
+        css            = "centered"
+        gridparentcss  = "std-widget-prolog-text widget-lead-spacing centered lp-widget-spacing">
+
+        &lt;span class="LowerFrameText"&gt;
+        Unfortunately, you cannot safely be a donor.&lt;br/&gt;&lt;br/&gt;
+        A history of Cancer places you at increased risk of kidney disease and dangerous complications if you donate your kidney.&lt;br/&gt;&lt;br/&gt;
+        If you have any questions, you may email us at&lt;br/&gt;
+        ${survey.text.screening.utsw.email.addr}&lt;br/&gt;
+        and a member of our transplant team will get back to you soon.
+        &lt;/span&gt;
+      </prolog>
+
+      <entry entryid="donor.dq.cancer.e" />
+    </query>
+
+   <!-- DIABETES: HARD REJECT -->
+   <query startpos="1" endpos="16" css="white-frame-with-green-border" queryID="donor.dq.rxdiabetes"
+          depends="control.reject.hard.diabetesrx">
+
+      <prolog startpos="1" endpos="16" css="centered" gridparentcss="std-widget-prolog-text widget-lead-spacing centered lp-widget-spacing">
+         &lt;span class="LowerFrameText"&gt;
+         Unfortunately, you cannot safely be a donor.&lt;br/&gt;&lt;br/&gt;
+         Your diabetes places you at increased risk of kidney disease and dangerous complications if you donate your kidney.&lt;br/&gt;&lt;br/&gt;
+         If you have any questions, you may email us at&lt;br/&gt;
+         ${survey.text.screening.utsw.email.addr}&lt;br/&gt;
+         and a member of our transplant team will get back to you soon.
+         &lt;/span&gt;
+      </prolog>
+      <entry entryid="donor.dq.rxdiabetes.e" />
+   </query>
+
+
+    <!-- Modifiable Risk Factors -->
+
+    <!-- BMI soft rejection -->
+    <query startpos = "1"
+      endpos        = "16"
+      css           = "white-frame-with-green-border"
+      queryID       = "donor_dq_mod_head"
+      depends       = "control.reject.hard:false,control.reject.mod">
+      <!-- Show only if
+                  No hard rejection has occurred                     -  control.reject.hard:false
+              and A soft rejection  has occurred                     -  control.reject.soft
+              and No soft rejection for BMI has occurred             -  control.reject.soft.bmi:false
+         -->
+      <prolog startpos = "1"
+        endpos         = "16"
+        css            = "centered"
+        gridparentcss  = "std-widget-prolog-text widget-lead-spacing centered lp-widget-spacing">
+        &lt;span class="donorModBehavHeader LowerFrameText"&gt;
+        Thank you for your generous offer to be a kidney donor. Unfortunately you are not eligible to be a donor at this time.&lt;br/&gt;&lt;br/&gt;
+        However, if you achieve the following goal you could be a suitable donor in the future:&lt;/span&gt;
+      </prolog>
+
+      <entry entryid="donor.dq.mod.head.e"/>
+    </query>
+
+
+    <query startpos = "1"
+      endpos        = "16"
+      css           = "white-frame-with-green-border"
+      queryID       = "donor_dq_minor"
+      depends       = "control.reject.hard:false,control.reject.mod.underage">
+      <!-- Show only if
+               No hard rejection has occurred                     -  control.reject.hard:false
+           and A soft rejection  has occurred                     -  control.reject.mod
+           and Donation candidate is less than 21 years of age    -  age:0-20 -->
+
+
+      <prolog startpos = "1"
+        endpos         = "16"
+        css            = "centered"
+        gridparentcss  = "std-widget-prolog-text widget-lead-spacing centered lp-widget-spacing">
+
+        &lt;span class = "donorModBehavMinor"
+        style          = "text-align:left;"&gt;
+        - Become 18 years of age or older.&lt;/span&gt;
+      </prolog>
+
+      <entry entryid="donor.dq.bmi.e"/>
+    </query>
+
+    <query startpos     = "1"
+      endpos            = "16"
+      queryID           = "donor_dq_drugs"
+      css               = "white-frame-with-green-border"
+      depends           = "control.reject.hard:false,control.reject.mod.drugabuse">
+
+      <prolog startpos = "1"
+        endpos         = "16"
+        css            = "centered"
+        gridparentcss  = "std-widget-prolog-text widget-lead-spacing centered lp-widget-spacing">
+
+        &lt;span class = " donorModBehavDrugs"
+        style          = "text-align:left;"&gt; - Stop using illicit drugs for at
+        least 6 months.&lt;/span&gt;</prolog>
+
+      <entry entryid="donor.dq.drugs.e" />
+    </query>
+
+    <query startpos = "1"
+      endpos        = "16"
+      queryID       = "donor_dq_smokes"
+      css           = "white-frame-with-green-border"
+      depends       = "control.reject.hard:false,control.reject.mod.tobacco.quit">
+
+      <prolog startpos = "1"
+        endpos         = "16"
+        css            = "centered"
+        gridparentcss  = "std-widget-prolog-text widget-lead-spacing centered lp-widget-spacing">
+
+        &lt;span class = "donorModBehavSmoke"
+        style          = "text-align:left;"&gt; - You must be willing to quit
+        using marijuana or tobacco products for at least 6 weeks prior to
+        surgery.&lt;/span&gt;</prolog>
+
+      <entry entryid="donor.dq.tobacco.e" />
+    </query>
+
+    <query startpos = "1"
+      endpos        = "16"
+      queryID       = "donor_dq_mj"
+      css           = "white-frame-with-green-border"
+      depends       = "control.reject.hard:false,control.reject.mod.mj.quit">
+
+      <prolog startpos = "1"
+        endpos         = "16"
+        css            = "centered"
+        gridparentcss  = "std-widget-prolog-text widget-lead-spacing centered lp-widget-spacing">
+
+        &lt;span class = "donorModBehavSmoke"
+        style          = "text-align:left;"&gt; - You must be willing to quit
+        using marijuana or tobacco products for at least 6 weeks prior to
+        surgery.&lt;/span&gt;</prolog>
+
+      <entry entryid="donor.dq.tobacco.e" />
+    </query>
+
+     <query startpos = "1"
+            endpos   = "16"
+            queryID  = "donor_dq_bmi"
+            css      = "white-frame-with-green-border"
+            depends  = "control.reject.hard:false,control.reject.mod.bmi">
+
+        <prolog startpos="1"
+                endpos="16" css="centered"
+                gridparentcss="std-widget-prolog-text widget-lead-spacing centered lp-widget-spacing">
+
+            &lt;span class="donorModBehavBMI"
+           style="text-align:left;"&gt;
+            - Lose at least ${diff-bmi}.&lt;/span&gt;</prolog>
+        <entry entryid="donor.dq.bmi.e" />
+    </query>
+
+    <query startpos = "1"
+      endpos        = "16"
+      css           = "white-frame-with-green-border"
+      queryID       = "donor_dq_mod_foot"
+
+      depends="control.reject.hard:false,control.reject.mod.*">
+      <!-- Show only if
+                 No hard rejection has occurred    -  control.reject.hard:false
+             and A soft rejection has occurred     -  control.reject.soft
+        -->
+
+
+      <prolog startpos = "1"
+        endpos         = "16"
+        css            = "centered"
+        gridparentcss  = "std-widget-prolog-text widget-lead-spacing centered lp-widget-spacing">
+
+        &lt;span class="donorFooter LowerFrameText"&gt;
+        We ask that you contact us once you have achieved the above goals.
+        If you have any questions, you may email us at&lt;br/&gt;
+        ${survey.text.screening.utsw.email.addr}&lt;br/&gt;
+        and a member of our transplant team will get back to you soon.
+        &lt;/span&gt;
+      </prolog>
+
+      <entry entryid="donor.dq.mod.head.e"/>
+    </query>
+
+    <!-- The queries below contain only hidden content, they will not be displayed.
+        this was how markers were set depending upon other markers in the days before marker-format -->
+   <query queryID = "donor.dq.htn.q"
+     depends       = "control.reject.hard.htn">
+
+     <entry entryid = "rjc11.e">
+       <itemselection
+         hidden     = "true"
+         itemid     = "rjc11.i"
+         selected   = "true"
+         markers    = "dq.htn:Hypertension,survey.screen.report.dq.htn:Hypertension" /></entry>
+   </query>
+
+   <query queryID = "donor.dq.hcv.q"
+     depends      = "control.reject.hard.hepc">
+
+     <entry entryid = "rjc11.e">
+       <itemselection
+         hidden     = "true"
+         itemid     = "rjc11.i"
+         selected   = "true"
+         markers    = "dq.hcv:Hepatitis+C,survey.screen.report.dq.hcv:Hepatitis+C" /></entry>
+   </query>
+
+   <query queryID="donor_dqrj_bmi"
+     depends="control.reject.mod.bmi">
+     <entry entryid="rjcow.e">
+       <itemselection
+         hidden   = "true"
+         itemid   = "rjcow.i"
+         selected = "true"
+         markers  = "dq.ow:BMI+exceeds+35,survey.screen.report.dq.ow:BMI%20exceeds%2035" /></entry>
+   </query>
+
+   <query queryID   = "donor.dq.diabetes.q"
+       depends      = "control.reject.hard.diabetesrx">
+     <entry entryid = "rjc11.diabetes">
+       <itemselection
+         hidden     = "true"
+         itemid     = "rjc11.diabetes"
+         selected   = "true"
+         markers    = "dq.diabetes:Diabetes,survey.screen.report.dq.diabetes:Diabetes" /></entry>
+   </query>
+
+   <query queryID="donor_dqrj_tobacco"
+     depends="control.reject.mod.tobacco.quit">
+
+     <entry entryid = "rjcsm.e">
+       <itemselection
+         hidden   = "true"
+         itemid   = "rjcsm.i"
+         selected = "true"
+         markers  = "dq.st0:unwilling+to+quit+tobacco+or+marijuana,survey.screen.report.dq.st0:unwilling+to+quit+tobacco+or+marijuana" /></entry>
+   </query>
+
+   <query queryID="donor_dqrj_drugs"
+     depends="control.reject.mod.drugabuse">
+
+     <entry entryid="rjcda.e">
+       <itemselection
+         hidden   = "true"
+         itemid   = "rjcda.i"
+         selected = "true"
+         markers  = "dq.da:current+recreational+drug+use,survey.screen.report.dq.da:current+recreational+drug+use" /></entry>
+   </query>
